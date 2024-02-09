@@ -24,8 +24,7 @@ public class TaskRepository implements AssignmentRepository {
 
     @Override
     public List<Assignment> getAll() {
-        List<Task> tasks = (List<Task>) taskCrudRespository.findAll();
-        tasks.forEach(task -> System.out.println(task.getStatus().getName()));
+        List<Task> tasks = (List<Task>) taskCrudRespository.findByOrderByBeginDateDesc();
         return mapper.toAssignments(tasks);
     }
 
